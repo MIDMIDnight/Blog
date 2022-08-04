@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccc.blog.dao.mapper.TagMapper">
+
+    <resultMap id="BaseResultMap" type="com.ccc.blog.dao.pojo.Tag">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+            <result property="tagName" column="tag_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,avatar,tag_name
+    </sql>
+
+    <!--    List<Tag> findTagsByArticles(Long articlesID);-->
+    <select id="findTagsByArticles" parameterType="long" resultType="com.ccc.blog.dao.pojo.Tag">
+    select id,avatar,tag_name as tagName from ms_tag
+    where id in
+    (select tag_id from ms_article_tag where article_id=#{articlesID})
+
+    </select>
+
+<!--   List<Long> findHotsId(int limit); -->
+    <select id="findHotsId" parameterType="int" resultType="long">
+        select tag_id from ms_article_tag group by tag_id order by count(*) desc limit #{limit}
+    </select>
+
+<!-- List<Tag> findTagByTagsIds(List<Long> tagsid );-->
+    <select id="findTagByTagsIds" parameterType="list" resultType="com.ccc.blog.dao.pojo.Tag">
+        select id,tag_name as tagName from ms_tag
+        where id in
+        <foreach collection="tagsid" item="tagsid" separator="," open="(" close=")">
+            #{tagsid}
+        </foreach>
+    </select>
+
+
+</mapper>
