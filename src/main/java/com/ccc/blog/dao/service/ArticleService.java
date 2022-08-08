@@ -2,8 +2,10 @@ package com.ccc.blog.dao.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ccc.blog.dao.pojo.Article;
+import com.ccc.blog.vo.common.ArticleParam;
 import com.ccc.blog.vo.common.PagePram;
 import com.ccc.blog.vo.common.R;
+import com.ccc.blog.vo.front.ArticleBodyVo;
 import com.ccc.blog.vo.front.ArticleVo;
 
 
@@ -23,4 +25,10 @@ public interface ArticleService extends IService<Article> {
     R newArticle(int limt);
 
     R listArchives();
+
+    R findArticleById(Long articleId);
+
+    public ArticleBodyVo findArticleBodyById(Long bodyID);
+
+    R publish(ArticleParam articleParam);
 }

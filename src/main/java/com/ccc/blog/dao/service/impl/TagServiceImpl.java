@@ -1,12 +1,12 @@
 package com.ccc.blog.dao.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ccc.blog.dao.pojo.Tag;
 import com.ccc.blog.dao.service.TagService;
 import com.ccc.blog.dao.mapper.TagMapper;
 import com.ccc.blog.vo.common.R;
 import com.ccc.blog.vo.front.TagVo;
-import org.apache.commons.lang.ObjectUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,13 +37,32 @@ public class TagServiceImpl extends ServiceImpl<TagMapper, Tag>
     public R hots(int limit) {
 
         List<Long> hotsId = tagMapper.findHotsId(limit);
-        System.out.println(hotsId+"******************************************************");
+
         if (hotsId==null){
             return R.success(Collections.emptyList());
         }
         List<Tag> findTagByTagsIds=tagMapper.findTagByTagsIds(hotsId);
-        System.out.println(findTagByTagsIds+"***********************************************");
+
         return R.success(findTagByTagsIds);
+    }
+
+    @Override
+    public R findAll() {
+        List<Tag> tags = this.tagMapper.selectList(new LambdaQueryWrapper<>());
+        return R.success(copyList(tags));
+    }
+
+    @Override
+    public R findAllDetail() {
+        List<Tag> tags = this.tagMapper.selectList(new LambdaQueryWrapper<>());
+        return R.success(copyList(tags));
+    }
+
+    @Override
+    public R getDetailById(Long id) {
+
+        Tag tag = tagMapper.selectById(id);
+        return R.success(copy(tag));
     }
 
     public TagVo copy(Tag tag){

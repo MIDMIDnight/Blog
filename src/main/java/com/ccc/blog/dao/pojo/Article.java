@@ -14,10 +14,13 @@ import lombok.Data;
 @TableName(value ="ms_article")
 @Data
 public class Article implements Serializable {
+    public static Integer Article_Common=0;
+
+    public static Integer Article_Top=1;
     /**
      * 
      */
-    @TableId(type = IdType.AUTO)
+    //@TableId(type = IdType.AUTO) 搞不懂了
     private Long id;
 
     /**
@@ -63,7 +66,7 @@ public class Article implements Serializable {
     /**
      * 类别id
      */
-    private Integer categoryId;
+    private Long categoryId;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

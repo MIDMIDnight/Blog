@@ -5,6 +5,7 @@ import com.ccc.blog.dao.service.TagService;
 import com.ccc.blog.vo.common.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,5 +20,23 @@ public class TagController {
     public R hots(){
     int limit=6;//查询最热的6个标签
         return tagService.hots(limit);
+
+    }
+
+    @GetMapping
+    public R getAll(){
+
+        return tagService.findAll();
+    }
+
+    @GetMapping("detail")
+    public R getAllDetail(){
+
+        return tagService.findAllDetail();
+    }
+    @GetMapping("detail/{id}")
+    public R getDetailById(@PathVariable("id")Long id){
+
+        return tagService.getDetailById(id);
     }
 }

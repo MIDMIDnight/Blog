@@ -1,13 +1,13 @@
 server:
-  port: 8888
+  port: 8889
 
 spring:
 
   servlet:
     multipart:
-#      上传文件的总最大值
+      #      上传文件的总最大值
       max-request-size: 30MB
-#      单个文件的最大值
+      #      单个文件的最大值
       max-file-size: 5MB
   main:
     allow-circular-references: true
@@ -17,9 +17,12 @@ spring:
     password: CNTweiai1314
     driver-class-name: com.mysql.cj.jdbc.Driver
   redis:
-#    172.17.0.2
+    #    172.17.0.2
     host: 172.17.0.2
     port: 6379
+  mvc:
+    servlet:
+      path: /api
 
 
 
@@ -30,4 +33,3 @@ mybatis-plus:
   global-config:
     db-config:
       table-prefix: ms_
-

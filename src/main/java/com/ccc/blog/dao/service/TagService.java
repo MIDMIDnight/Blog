@@ -18,4 +18,9 @@ public interface TagService extends IService<Tag> {
 
     R hots(int limit);
 
+    R findAll();
+
+    R findAllDetail();
+
+    R getDetailById(Long id);
 }

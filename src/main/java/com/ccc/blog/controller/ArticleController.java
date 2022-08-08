@@ -4,14 +4,12 @@ package com.ccc.blog.controller;
 
 
 import com.ccc.blog.dao.service.ArticleService;
+import com.ccc.blog.vo.common.ArticleParam;
 import com.ccc.blog.vo.common.PagePram;
 import com.ccc.blog.vo.common.R;
 import com.ccc.blog.vo.front.ArticleVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -48,6 +46,16 @@ public class ArticleController {
     public R listArchives(){
 
         return articleService.listArchives();
+    }
+    @PostMapping("view/{id}")
+    public R findArticleById(@PathVariable("id") Long articleId){
+        return articleService.findArticleById(articleId);
+
+    }
+    @PostMapping("publish")
+    public R publish(@RequestBody ArticleParam articleParam){
+
+        return articleService.publish(articleParam);
     }
 
 }

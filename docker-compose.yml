@@ -1,0 +1,27 @@
+#version: '2.3.4'
+
+
+services:
+  nginx:
+   image: nginx
+   container_name: nginx
+   ports:
+    - "80:80"
+    - "443:443"
+   links:
+     - app
+   depends_on:
+    - app
+   volumes:
+    - /mnt/docker/docker-compose/nginx/:/etc/nginx/
+    - /mnt/CCC/web:/CCC/web
+    - /mnt/CCC/blog:/CCC/blog
+   network_mode: "bridge"
+  app:
+    image: app
+    container_name: app
+    #expose:
+    #  - "8889"
+    ports:
+      - "8889:8889"
+    network_mode: "bridge"

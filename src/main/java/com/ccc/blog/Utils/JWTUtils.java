@@ -1,4 +1,4 @@
-package com.ccc.blog.JWTUtils;
+package com.ccc.blog.Utils;
 import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
