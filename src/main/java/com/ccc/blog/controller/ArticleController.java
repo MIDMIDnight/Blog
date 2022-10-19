@@ -3,6 +3,7 @@ package com.ccc.blog.controller;
 
 
 
+import com.ccc.blog.common.aop.LogAnnotation;
 import com.ccc.blog.dao.service.ArticleService;
 import com.ccc.blog.vo.common.ArticleParam;
 import com.ccc.blog.vo.common.PagePram;
@@ -29,6 +30,7 @@ public class ArticleController {
 
         return success;
     }
+
     @PostMapping("hot")
     public R showArticleHot(){
         int limt=6;

@@ -218,6 +218,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article>
         if (tags != null) {
             for (TagVo tag : tags) {
                 ArticleTag articleTag = new ArticleTag();
+                //
                 articleTag.setArticleId(article.getId());
                 articleTag.setTagId(tag.getId());
                 this.articleTagMapper.insert(articleTag);

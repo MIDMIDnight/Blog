@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Component
 public class QiniuUtils {
     //七牛云免费的存储空间但是域名每30天更改一次要经常换！
-    public static  final String url = "rg6oztgoo.hn-bkt.clouddn.com/";
+    public static  final String url = "rjue4qs6t.hn-bkt.clouddn.com/";
 
     //修改以下两个值放到proprietarties中，在密钥管理中获取
     @Value("jEI6PmaXF_knDhoks2wWFRKlqky2dGssgHUQYWpS")
@@ -29,7 +29,7 @@ public class QiniuUtils {
         //...其他参数参考类注释
         UploadManager uploadManager = new UploadManager(cfg);
         //...生成上传凭证，然后准备上传，修改上传名称为自己创立空间的空间名称（是你自己的）
-        String bucket = "blogimageccc";
+        String bucket = "xiaoxiongchutao";
         //默认不指定key的情况下，以文件内容的hash值作为文件名
         try {
             byte[] uploadBytes = file.getBytes();

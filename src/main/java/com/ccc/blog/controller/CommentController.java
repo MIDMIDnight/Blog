@@ -1,5 +1,6 @@
 package com.ccc.blog.controller;
 
+import com.ccc.blog.common.aop.LogAnnotation;
 import com.ccc.blog.dao.service.CommentService;
 import com.ccc.blog.vo.common.CommentParam;
 import com.ccc.blog.vo.common.R;
@@ -15,6 +16,8 @@ public class CommentController {
     @Autowired
 
     private CommentService commentService;
+
+
     @GetMapping ("article/{id}")
     public R comment(@PathVariable("id")Long id ){
 

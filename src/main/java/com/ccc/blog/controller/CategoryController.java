@@ -1,5 +1,6 @@
 package com.ccc.blog.controller;
 
+import com.ccc.blog.common.aop.LogAnnotation;
 import com.ccc.blog.dao.service.CategoryService;
 import com.ccc.blog.vo.common.R;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("categorys")
 public class CategoryController {
-
     @Autowired
     private CategoryService categoryService;
+
+
     @GetMapping
     public R categories(){
         return categoryService.findAll();
